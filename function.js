@@ -47,3 +47,35 @@ console.log("globalVar: " + globalVar);
 
 // This will result in an error since localVar is not accessible outside the function.
 // console.log("localVar: " + localVar);
+
+
+// Question 3
+// Create a function called counter that returns another function. The inner function should increment 
+// and return a counter variable each time it's called. Use closures to achieve this. 
+// Test your counter function by creating multiple counters and incrementing them separately.
+
+function counter() {
+    let count = 0; // This variable is stored in the closure of the inner function.
+  
+    // The inner function, when called, increments and returns the counter.
+    return function () {
+      count++;
+      return count;
+    };
+  }
+  
+  // Create multiple counter instances
+  const counter1 = counter();
+  const counter2 = counter();
+  
+  // Increment and display counts for the first counter
+  console.log("Counter 1:");
+  console.log(counter1()); // Output: 1
+  console.log(counter1()); // Output: 2
+  
+  // Increment and display counts for the second counter
+  console.log("Counter 2:");
+  console.log(counter2()); // Output: 1
+  console.log(counter2()); // Output: 2
+  console.log(counter2()); // Output: 3
+  
